@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+body {
+    background-color: #dadada; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.fechar {
+    position: fixed; 
+    
+    
+    top: 7%;
+    right: 6%;  
+    
+    z-index: 100; 
+}
+
+
+.btn-fechar {
+    color: #487c22;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    
+    width: 70px;  
+    height: 70px;
+    background-color: #c9c9c9;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.7rem;
+}
+
+.container-anuncio {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+   
+    
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+
+.imagem-esquerda {
+    flex: 6; 
+   
+}
+
+
+.imagem-esquerda img {
+    width: 100%;
+    
+    height: 90vh; 
+    border-radius: 12px;
+    object-fit: cover; 
+}
+
+.anuncio-direita {
+flex: 4;
+    padding: 30px; 
+border-radius: 20px;
+border: 5px solid #417205;
+
+}
+
+.titulo {
+    font-size: 3rem;
+    color: #417205;
+    
+}
+
+.preco {
+      font-size: 1.8rem;
+ 
+  font-optical-sizing: auto;
+  font-weight: 700;
+    color: #417205; 
+    margin-bottom: 6px;
+}
+
+.data-anuncio {
+    font-size: 1.3rem;
+ margin-bottom: 5%;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  color: #1c3607;
+ 
+}
+
+
+
+.categoria {
+    margin-bottom: 3%;
+}
+
+.categoria-text {
+    background-color: #c9c9c9;
+    padding: 7px;
+    border-radius: 10px;
+    color: #1c3607;
+    width: fit-content; 
+}
+
+.descricao {
+    font-size: 1.7rem;
+ margin-top: 5%;
+ margin-bottom: 5%;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  color: #1c3607;
+    padding: 10px;
+    border-radius: 20px;
+  background-color: #c9c9c9;
+}
+
+.vendedor-info {
+    background-color: #c9c9c9;
+    width: fit-content; 
+    padding: 10px;
+    border-radius: 10px;
+     font-optical-sizing: auto;
+  font-weight: 600;
+  color: #1c3607;
+  font-size: 1.2rem;
+  margin-bottom: 10%;
+}
+
+
+.button {
+  display: block;      
+    margin: 0 auto;
+  --width: 100px;
+  --height: 35px;
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: #1c3607;
+  width: 40%;
+ 
+  height: 8vh;
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 1em;
+  font-family: "Arial";
+  font-size: 1.9rem;
+  
+  transition: background 0.3s;
+}
+
+.button::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+ 
+  font-size: 1.5rem;
+  color: #fff;
+  border-radius: .25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.button::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.button::after,.button::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper,.text,.icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0
+}
+
+.text,.icon {
+  transition: top 0.5s;
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.button:hover {
+  background: #1c3607;
+}
+
+.button:hover .text {
+  top: -100%;
+}
+
+.button:hover .icon {
+  top: 0;
+}
+
+.button:hover:before,.button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.button:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
+
+
+
+
+ 
+
+
+
+

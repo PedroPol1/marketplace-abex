@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Documento</title>
     <link rel="stylesheet" href="./public/home.css">
+     <link rel="stylesheet" href="./public/modal-home.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="top-bar">
-        <h1 class="logo">logo</h1>
+        <img src="/public/fotos/agro-direto.png" class="logo">
     </div>
 
     <aside class="menu-lateral">
@@ -24,7 +25,8 @@
 
        <div class="pesquisa">
          <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="pesquisa">
+        <input type="text" placeholder="pesquisar" class="box-pesquisa">
+    
         </div>
 
         <hr class="linha">
@@ -43,20 +45,47 @@
         <hr class="linha">
 
          <nav class="section">
-             <a href="licalização" class="section-btn">
-                <i class="far fa-user"></i> LOCALIZAÇÃO
+             <a href="localização" class="section-btn">
+                <i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO
             </a>
-
+        </nav>
               <hr class="linha">
 
-              <nav class="menu-section">
+              <nav class="section">
+                <div class="section-btn" onclick="abrirCategorias()" style="cursor: pointer;">
+                <i class="fas fa-chevron-right" id="seta-categorias"></i> CATEGORIAS
+            </div>
+            <div class="sub-categorias" id="lista-categorias">
+        <div class="section-btn sub-item">Sementes</div>
+        <div class="section-btn sub-item">Alimenticios</div>
+        <div class="section-btn sub-item">Maquinas</div>
+        <div class="section-btn sub-item">Alimenticios</div>
+        <div class="section-btn sub-item">Maquinas</div>
+    </div>
+
+   
             
-                <i class="fas fa-chevron-right"></i> CATEGORIAS
-            </a>
         </nav>
 
     </aside>
 
+     <div class="grid-anuncios">
+    <div class="card-anuncios">
+        <img src="public/fotos/semente.avif" alt="" class="imagem-card">
+        <div class="rodape-card">
+            <h3 class="titulo">Sementes de milho</h3>
+            <p class="preco">R$ 150,00</p>
+           <a href="/detalhes" class="btn-anuncio">Ver anúncio</a>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <script src="./public/menu-lateral.js" defer></script>
+    
     
 </body>
 </html>
