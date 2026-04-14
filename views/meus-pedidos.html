@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>Document</title>
     
     <link rel="stylesheet" href="./public/home.css">
-    <link rel="stylesheet" href="./public/modal-home.css">
+    <link rel="stylesheet" href="./public/meus-pedidos.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,7 @@
         </a>
     </div>
 </header>
+
 
     <div class="layout-principal">
 
@@ -78,21 +79,49 @@
             </nav>
         </aside>
 
-        <main class="conteudo-principal">
-            <div class="grid-anuncios">
+        <main class="conteudo-pedidos">
+            <div class="cabecalho-pedidos">
+                <h1><i class="fa-solid fa-box-open"></i> Meus Pedidos</h1>
+            </div>
+
+            <div class="lista-pedidos">
                 
-                <div class="card-anuncios">
-                    <img src="public/fotos/semente.avif" alt="Sementes de milho" class="imagem-card">
-                    <div class="rodape-card">
-                        <h3 class="titulo">Sementes de milho</h3>
-                        <p class="preco">R$ 150,00</p>
-                        <a href="/detalhes" class="btn-anuncio">Ver anúncio</a>
+                <div class="card-pedido">
+                    <img src="public/fotos/semente.avif" alt="Semente de Milho" class="img-pedido">
+                    
+                    <div class="info-pedido">
+                        <h2>Sementes de milho</h2>
+                        <p class="vendedor"><i class="fa-solid fa-shop"></i> Seu Zé Produtos Agrícolas</p>
+                        <p class="data">Realizado em: <strong>12/10/2023</strong></p>
+                    </div>
+
+                    <div class="status-pedido">
+                        <span class="badge status-concluido">Concluído</span>
+                        <p class="valor-pedido">R$ 300,00</p>
                     </div>
                 </div>
 
-                </div> </main>
+                <div class="card-pedido">
+                    <img src="public/fotos/semente.avif" alt="Outro Produto" class="img-pedido">
+                    
+                    <div class="info-pedido">
+                        <h2>Adubo Orgânico 50kg</h2>
+                        <p class="vendedor"><i class="fa-solid fa-shop"></i> Fazenda Esperança</p>
+                        <p class="data">Realizado em: <strong>15/10/2023</strong></p>
+                    </div>
 
+                    <div class="status-pedido">
+                        <span class="badge status-pendente">Aguardando Separação</span>
+                        <p class="valor-pedido">R$ 120,00</p>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
     </div> <script src="./public/menu-lateral.js" defer></script>
-    
+
 </body>
 </html>

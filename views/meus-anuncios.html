@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="./public/home.css">
+    <link rel="stylesheet" href="./public/meus-anuncios.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <header class="top-bar">
+        <a href="home">
+            <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
+        </a>
+        <div class="top-bar-icons">
+            <a href="#" class="icon-top" title="Notificações">
+                <i class="fa-regular fa-bell"></i>
+                <span class="badge-notificacao">3</span> 
+            </a>
+            
+            <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
+                <i class="fa-solid fa-handshake"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="layout-principal">
+
+        <aside class="menu-lateral">
+            <div class="div-mercado">
+                <h1 class="mercado">MERCADO</h1>
+            </div>
+
+            <div class="pesquisa">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="pesquisar" class="box-pesquisa">
+            </div>
+
+            <hr class="linha">
+
+            <nav class="section">
+                <a href="novo-anuncio" class="section-btn">
+                    <i class="fas fa-plus"></i> NOVO ANUNCIO
+                </a>
+
+             
+                <a href="sua-conta" class="section-btn">
+                    <i class="far fa-user"></i> SUA CONTA
+                </a>
+            </nav>
+
+            <hr class="linha">
+
+            <nav class="section">
+                <a href="localização" class="section-btn">
+                    <i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO
+                </a>
+            </nav>
+            
+            <hr class="linha">
+
+            <nav class="section">
+                <div class="section-btn" onclick="abrirCategorias()" style="cursor: pointer;">
+                    <i class="fas fa-chevron-right" id="seta-categorias"></i> CATEGORIAS
+                </div>
+                <div class="sub-categorias" id="lista-categorias">
+                    <div class="section-btn sub-item">Sementes</div>
+                    <div class="section-btn sub-item">Alimenticios</div>
+                    <div class="section-btn sub-item">Maquinas</div>
+                    <div class="section-btn sub-item">Alimenticios</div>
+                    <div class="section-btn sub-item">Maquinas</div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal">
+            <div class="painel-header">
+                <h2><i class="fas fa-boxes-stacked"></i> Meus Anúncios</h2>
+                
+            </div>
+
+            <div class="lista-gerenciamento">
+                
+                <div class="item-anuncio" id="item-1">
+                    <img src="public/fotos/semente.avif" alt="Produto">
+                    <div class="item-info">
+                        <h3>Sementes de Milho Híbrido</h3>
+                        <span class="item-preco">R$ 150,00</span>
+                        <span class="status-badge">Ativo</span>
+                    </div>
+                    <div class="item-acoes">
+                        <button class="btn-editar" title="Editar">
+                            <i class="fas fa-pen-to-square"></i> Editar
+                        </button>
+                        <button class="btn-excluir" onclick="removerAnuncio('item-1')" title="Excluir">
+                            <i class="fas fa-trash-can"></i> Excluir
+                        </button>
+                    </div>
+                </div>
+
+                <div class="item-anuncio" id="item-2">
+                    <img src="public/fotos/milho.jpg" alt="Produto">
+                    <div class="item-info">
+                        <h3>Saca de Milho em Grãos 50kg</h3>
+                        <span class="item-preco">R$ 85,00</span>
+                        <span class="status-badge">Ativo</span>
+                    </div>
+                    <div class="item-acoes">
+                        <button class="btn-editar" title="Editar">
+                            <i class="fas fa-pen-to-square"></i> Editar
+                        </button>
+                        <button class="btn-excluir" onclick="removerAnuncio('item-2')" title="Excluir">
+                            <i class="fas fa-trash-can"></i> Excluir
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div> 
+    
+    <script src="./public/menu-lateral.js" defer></script>
+    
+</body>
+</html>

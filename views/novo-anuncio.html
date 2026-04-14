@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="./public/home.css">
+    <link rel="stylesheet" href="./public/novo-anuncio.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="top-bar">
+        <a href="home">
+    <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
+    </a>
+    <div class="top-bar-icons">
+        <a href="#" class="icon-top" title="Notificações">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge-notificacao">3</span> </a>
+        
+        <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
+            <i class="fa-solid fa-handshake"></i>
+        </a>
+    </div>
+</header>
+
+
+    <div class="layout-principal">
+ <aside class="menu-lateral">
+            <div class="div-mercado">
+                <h1 class="mercado">MERCADO</h1>
+            </div>
+
+            <div class="pesquisa">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="pesquisar" class="box-pesquisa">
+            </div>
+
+            <hr class="linha">
+
+            <nav class="section">
+                <a href="novo-anuncio" class="section-btn">
+                    <i class="fas fa-plus"></i> NOVO ANUNCIO
+                </a>
+                <a href="sua-conta" class="section-btn active">
+                    <i class="far fa-user"></i> SUA CONTA
+                </a>
+            </nav>
+
+            <hr class="linha">
+
+            <nav class="section">
+                <a href="localização" class="section-btn">
+                    <i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO
+                </a>
+            </nav>
+            <hr class="linha">
+
+            <nav class="section">
+                <div class="section-btn" onclick="abrirCategorias()" style="cursor: pointer;">
+                    <i class="fas fa-chevron-right" id="seta-categorias"></i> CATEGORIAS
+                </div>
+                <div class="sub-categorias" id="lista-categorias">
+                    <div class="section-btn sub-item">Sementes</div>
+                    <div class="section-btn sub-item">Alimenticios</div>
+                    <div class="section-btn sub-item">Maquinas</div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="conteudo-novo-anuncio">
+            <div class="card-formulario">
+                <div class="header-form">
+                    <h1><i class="fa-solid fa-seedling"></i> Criar Novo Anúncio</h1>
+                    <p>Preencha os dados abaixo para colocar seu produto no mercado.</p>
+                </div>
+
+                <form class="form-anuncio">
+                    <div class="upload-container">
+                        <label>Fotos do Produto</label>
+                        <div class="area-upload" id="drop-area">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p>Clique ou arraste as fotos aqui</p>
+                            <input type="file" id="input-fotos" multiple accept="image/*" hidden>
+                        </div>
+                    </div>
+
+                    <div class="grid-form">
+                        <div class="campo full-width">
+                            <label>Título do Anúncio</label>
+                            <input type="text" placeholder="Ex: Sementes de Milho Híbrido 1kg">
+                        </div>
+
+                        <div class="campo">
+                            <label>Categoria</label>
+                            <select>
+                                <option value="sementes">Sementes</option>
+                                <option value="alimenticios">Alimentícios</option>
+                                <option value="maquinas">Máquinas</option>
+                                <option value="animais">Animais</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label>Preço (R$)</label>
+                            <input type="number" step="0.01" placeholder="0,00">
+                        </div>
+
+                        <div class="campo">
+                            <label>Quantidade em Estoque</label>
+                            <input type="number" placeholder="Ex: 20">
+                        </div>
+
+                        <div class="campo">
+                            <label>Localização (Cidade/UF)</label>
+                            <input type="text" placeholder="Ex: Xaxim, SC">
+                        </div>
+
+                        <div class="campo full-width">
+                            <label>Descrição Detalhada</label>
+                            <textarea rows="5" placeholder="Descreva as características, prazos de entrega e detalhes técnicos..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancelar">Cancelar</button>
+                        <button type="submit" class="btn-publicar">Publicar Anúncio</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+    </div>
+
+    </div> <script src="./public/menu-lateral.js" defer></script>
+
+</body>
+</html>

@@ -10,30 +10,47 @@
 </head>
 <body>
 
-    <div class="fechar">
-        <a href="/" class="btn-fechar"><i class="fa-solid fa-xmark"></i></a>
-    </div>
 
         <div class="container-anuncio">
         <div class="imagem-esquerda">
-            <img src="./public/fotos/semente.avif" alt="Sementes de milho">
+            <div class="carrossel">
+                
+                <img src="./public/fotos/semente.avif" alt="" class="slide ativo">
+                
+                <img src="./public/fotos/milho.jpg" alt="" class="slide">
+                
+                <img src="./public/fotos/semente3.avif" alt="" class="slide">
+                
+                <button class="btn-carrossel prev" onclick="mudarSlide(-1)">&#10094;</button>
+                <button class="btn-carrossel next" onclick="mudarSlide(1)">&#10095;</button>
+
+            </div>
         </div>
 
 
         
            
         <div class="anuncio-direita">
+            <div id="aba-detalhes">
+                
+    <div class="fechar">
+        <a href="home" class="btn-fechar"><i class="fa-solid fa-xmark"></i></a>
+    </div>
+
             <div class="categoria">
                 <h2 class="categoria-text">Sementes</h2>
+                <h2 class="propriedade-text">Seu zé produtos agricolas</h2>
             </div>
             <h1 class="titulo">Sementes de milho</h1>
             <p class="preco">R$ 150,00</p>
 
-            
-            <div class="data-anuncio">
+            <div class="alinhar">
+                 <div class="data-anuncio">
                 Anunciado em: 20/02/2026
             </div>
-
+                <div class="qtd-estoque"> 20 em estoque </div>
+           
+            </div>
              
             
             
@@ -50,19 +67,74 @@
                     <div class="vendedor-info">
                 <i class="fas fa-map-marker-alt"></i> Localização: Xaxim, SC
             </div>
+<div class="comprar-row">
+    <div class="quantidade-comprar">
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" value="1" min="1">
+    </div>
 
-            <div class="button">
-<div class="button-wrapper">
-  <div class="text">Comprar</div>
-    <span class="icon">
-      <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
-</svg>
-    </span>
-  </div>
-</div>
-            
+    <div class="button">
+        <div class="button-wrapper">
+            <div class="text">Comprar</div>
+            <span class="icon">
+            <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+            </svg>
+            </span>
         </div>
     </div>
+</div>
+    </div>
+            
+    
+
+            <div id="aba-compra" style="display: none;">
+                
+                <button id="btn-voltar-detalhes" class="btn-voltar-simples">
+                    <i class="fas fa-arrow-left"></i> Voltar ao anuncio
+                </button>
+
+                <h2 class="titulo-compra">Finalizar Pedido</h2>
+                <p class="resumo-compra">Sementes de milho</p>
+                <div class="row">
+                <h2 class="valor-unit">Valor Unitario:
+                <h2 class="valor">R$ 150,00</h2></h2>
+                </div>
+                <div class="row">
+                <h2 class="valor-total">Valor Total:  <h2 class="valor">R$ 300,00</h2></h2>
+                </div>
+                <form class="form-compra">
+                   <label>Nome Completo</label>
+                     <input type="text" placeholder="nome do banco" readonly>
+
+                    <label>Endereço de Retirada</label>
+                    <input type="text" placeholder="endereço do banco" readonly>
+
+                    <label>Forma de Pagamento</label>
+                    <select>
+                        <option>PIX</option>
+                        <option>Cartão de Crédito</option>
+                        <option>Boleto</option>
+                    </select>
+
+                  <button type="button" id="btn-confirmar" class="btn-comprar">Confirmar Pagamento</button>
+                </form>
+            </div> <div id="aba-sucesso" style="display: none;">
+                <i class="fa-solid fa-circle-check icone-sucesso"></i>
+                <h2 class="titulo-sucesso">Compra Confirmada!</h2>
+                <p class="texto-sucesso">Seu pedido foi processado com sucesso. O vendedor já foi notificado e você pode acompanhar os detalhes na sua área de pedidos.</p>
+                
+                <a href="meus-pedidos" class="btn-meus-pedidos">
+                    <i class="fa-solid fa-box-open"></i> Ver Meus Pedidos
+                </a>
+                
+                <a href="/" class="link-home">Ou voltar para a página inicial</a>
+            </div>
+
+        </div> 
+
+    <script src="./public/compra.js" defer></script>
+     <script src="./public/carrossel.js" defer></script>
+
 </body>
 </html>

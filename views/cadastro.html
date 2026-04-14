@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="./public/cadastro.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="cadastro-container">
+        
+        <div class="cadastro-form-section">
+            <div class="form-scroll-wrapper">
+                <form class="cadastro-form" action="home" method="GET" onsubmit="return validarSenha(event)">
+                    
+                    <div class="cadastro-header">
+                        <h2>Crie sua conta</h2>
+                        <p>Junte-se ao Agro Direto e comece a negociar hoje mesmo.</p>
+                    </div>
+                    
+                    <div class="tipo-conta-wrapper">
+                 <label class="tipo-conta active" id="label-comprador">
+                  <input type="radio" name="tipo-conta" value="comprador" checked onchange="mudarTipoConta()">
+                 <i class="fa-solid fa-basket-shopping"></i> Quero Comprar
+                 </label>
+                <label class="tipo-conta" id="label-vendedor">
+              <input type="radio" name="tipo-conta" value="vendedor" onchange="mudarTipoConta()">
+                  <i class="fa-solid fa-tractor"></i> Quero Vender
+                </label>
+            </div>
+
+                <div class="input-group">
+                    <i class="fa-regular fa-user icone-input"></i>
+                    <input type="text" placeholder="Seu Nome Completo" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-regular fa-envelope icone-input"></i>
+                    <input type="email" placeholder="Seu E-mail" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-brands fa-whatsapp icone-input"></i>
+                    <input type="tel" placeholder="Seu WhatsApp (com DDD)" required>
+                </div>
+
+                <div id="campos-vendedor" style="display: none;">
+                    <div class="input-group">
+                        <i class="fa-solid fa-house-chimney icone-input"></i>
+                        <input type="text" id="nome-propriedade" placeholder="Nome da Propriedade (Sítio, Fazenda...)">
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-map-location-dot icone-input"></i>
+                        <input type="text" id="endereco-propriedade" placeholder="Endereço da Propriedade">
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-brands fa-pix icone-input"></i>
+                        <input type="text" id="chave-pix" placeholder="Chave PIX para recebimentos">
+                    </div>
+                </div>
+                <div class="input-group">
+
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock icone-input"></i>
+                        <input type="password" id="senha" placeholder="Crie uma Senha" required>
+                        <i class="fa-regular fa-eye icone-senha" onclick="toggleSenha('senha', this)"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-check-double icone-input"></i>
+                        <input type="password" id="confirma-senha" placeholder="Confirme sua Senha" required>
+                        <i class="fa-regular fa-eye icone-senha" onclick="toggleSenha('confirma-senha', this)"></i>
+                    </div>
+                    
+                    <p id="mensagem-erro" class="mensagem-erro" style="display: none;">As senhas não coincidem!</p>
+
+                    <button type="submit" class="btn-cadastro">Cadastrar e Entrar</button>
+
+                    <p class="login-link">Já tem uma conta? <a href="/">Faça login aqui</a></p>
+                    
+                </form>
+            </div>
+        </div>
+        </div>
+
+        <div class="cadastro-banner">
+            <div class="overlay-verde"></div>
+            <div class="banner-content">
+                <h1>Sua Nova Parceria</h1>
+                <p>Produtores e compradores em um ecossistema seguro, rápido e sem burocracia.</p>
+            </div>
+        </div>
+
+    
+
+    <script src="./public/cadastro.js" defer></script>
+</body>
+</html>

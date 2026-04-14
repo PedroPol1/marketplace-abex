@@ -6,25 +6,72 @@
 }
 
 body {
-    background-color: #dadada; 
+    background-color: #F8F9FA; 
 }
 
 .top-bar {
-  background-color: #28812d;
-    padding: 0;
+    background-color: #1a7225;
+    padding: 0 30px; 
     border-bottom: 2px solid #999;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-   
+    height: 80px; 
     
     
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
 
+.top-bar > a {
+    display: flex;
+    align-items: center;
+    height: 100%; 
+    width: 13%;   
+    min-width: 160px; 
+    text-decoration: none;
 }
 
 .logo {
-   width: 12%;
-    margin-left: 5%;
+    width: 100%; 
+    height: auto;
+    display: block;
+    margin-left: 18%;
 }
 
+.top-bar-icons {
+    display: flex;
+    gap: 60px; 
+    align-items: center;
+    margin-right: 3%;
+    
+}
+
+.icon-top {
+    color: white;
+    font-size: 1.6rem;
+    text-decoration: none;
+    position: relative; 
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.icon-top:hover {
+    color: #eaf1e3; 
+    transform: scale(1.1); 
+}
+
+
+.badge-notificacao {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background-color: #e74c3c; /* Vermelho vivo */
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
 .linha {
     border: none;
     border-top: 1px solid #999;
@@ -33,11 +80,14 @@ body {
 
 
 .menu-lateral {
-    position: fixed; 
+   
+    position: sticky; 
+    top: 80px;
+    
     width: 20%;
-   min-width: 300px;
-   height: 100vh;
-    background-color: #e4e3e3; 
+    min-width: 300px;
+    height: calc(100vh - 80px);
+    background-color: #ececec; 
     display: flex;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     overflow-y: auto; 
@@ -45,7 +95,6 @@ body {
     padding-top: 10px;
     border-right: 1px solid #bbb;
 }
-
 .mercado {
     justify-content: center;
     display: flex;
@@ -54,6 +103,7 @@ body {
   font-size: 3rem;
   font-style: bold;
   color: #417205;
+  margin-top: 2%;
 }
 
 .box-pesquisa {
@@ -65,10 +115,12 @@ body {
 }
 
 .pesquisa {
-   margin-left: 10%;
-    margin-top: 8%;
+    margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 9%;
+   
+    margin-top: 25px;
+    margin-bottom: 25px;
+    
     padding: 17px;
     background-color: #dadada;
     border-radius: 10px;
@@ -78,31 +130,31 @@ body {
 .section {
     flex-direction: column;
     display: flex;
-    
-   align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
     
 }
 
 
 .section-btn {
-    color: #417205;
+    color: #212529;
     text-decoration: none;
     padding: 20px;
     font-optical-sizing: auto;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.6rem;
     font-style: bold;
-   background-color: #dadada;
-   border-radius: 10px;
-   margin-top: 5%;
-   width: 70%;
-    margin-bottom: 5%;
-
+    background-color: #dadada;
+    border-radius: 10px;
+    
+    /* 👇 MUDANÇA: Evite margem vertical em % para sumir com a barra fantasma */
+    margin-top: 15px;
+    margin-bottom: 15px; 
 }
 
 .section-btn:hover {
 
-    color: #233d03;
+   background-color: #339c41;
 }
 
 .sub-categorias {
@@ -133,17 +185,16 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 25px; 
-    padding: 20px; 
-    
+    padding: 20px;
+    flex: 1; 
 
-    margin-left: max(300px, 20%); 
-    
 }
 
 .card-anuncios {
-    background-color: #ffffff;
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    background-color: #ececec;
+    border-radius: 20px; 
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s, box-shadow 0.2s;
     overflow: hidden; 
     display: flex;
     flex-direction: column;
@@ -153,12 +204,13 @@ body {
 
 .card-anuncios:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
 
 
 .imagem-card {
     width: 100%;
-    height: 300px; 
+    height: 325px; 
     object-fit: cover; 
 }
 
@@ -204,8 +256,19 @@ body {
 }
 
 .btn-anuncio:hover {
-    background: #417205;
+    background: #339c41;
 
   font-size: 1.2rem;
 }
 
+.layout-principal {
+    display: flex;
+    align-items: flex-start; 
+    width: 100%;
+}
+
+.conteudo-principal {
+    flex: 1; 
+    width: 100%;
+    
+}

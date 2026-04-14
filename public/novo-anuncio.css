@@ -1,0 +1,129 @@
+.conteudo-novo-anuncio {
+    flex: 1;
+    padding: 40px 8%;
+    background-color: #F8F9FA;
+    min-height: calc(100vh - 80px);
+}
+
+.card-formulario {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.header-form {
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+}
+
+.header-form h1 {
+    color: #1a7225;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* --- Área de Upload --- */
+.upload-container {
+    margin-bottom: 30px;
+}
+
+.upload-container label {
+    display: block;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.area-upload {
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #fdfdfd;
+}
+
+.area-upload:hover {
+    border-color: #1a7225;
+    background: #f0f7f0;
+}
+
+.area-upload i {
+    font-size: 3rem;
+    color: #1a7225;
+    margin-bottom: 10px;
+}
+
+/* --- Grid do Formulário --- */
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label {
+    font-weight: bold;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.campo input, .campo select, .campo textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.campo input:focus, .campo textarea:focus {
+    border-color: #1a7225;
+}
+
+/* --- Botões --- */
+.form-actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.btn-cancelar {
+    padding: 12px 25px;
+    background: #eee;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-publicar {
+    padding: 12px 35px;
+    background: #1a7225;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-publicar:hover {
+    background: #1c3607;
+    transform: translateY(-2px);
+}

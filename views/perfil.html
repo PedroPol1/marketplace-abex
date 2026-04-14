@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-    
+    <title>Document</title>
     <link rel="stylesheet" href="./public/home.css">
-    <link rel="stylesheet" href="./public/modal-home.css">
+    <link rel="stylesheet" href="./public/perfil.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    
-    <header class="top-bar">
+  <header class="top-bar">
         <a href="home">
     <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
     </a>
@@ -30,8 +28,8 @@
     </div>
 </header>
 
-    <div class="layout-principal">
 
+    <div class="layout-principal">
         <aside class="menu-lateral">
             <div class="div-mercado">
                 <h1 class="mercado">MERCADO</h1>
@@ -48,8 +46,7 @@
                 <a href="novo-anuncio" class="section-btn">
                     <i class="fas fa-plus"></i> NOVO ANUNCIO
                 </a>
-
-                <a href="sua-conta" class="section-btn">
+                <a href="sua-conta" class="section-btn active">
                     <i class="far fa-user"></i> SUA CONTA
                 </a>
             </nav>
@@ -61,7 +58,6 @@
                     <i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO
                 </a>
             </nav>
-            
             <hr class="linha">
 
             <nav class="section">
@@ -72,27 +68,60 @@
                     <div class="section-btn sub-item">Sementes</div>
                     <div class="section-btn sub-item">Alimenticios</div>
                     <div class="section-btn sub-item">Maquinas</div>
-                    <div class="section-btn sub-item">Alimenticios</div>
-                    <div class="section-btn sub-item">Maquinas</div>
                 </div>
             </nav>
         </aside>
 
-        <main class="conteudo-principal">
-            <div class="grid-anuncios">
-                
-                <div class="card-anuncios">
-                    <img src="public/fotos/semente.avif" alt="Sementes de milho" class="imagem-card">
-                    <div class="rodape-card">
-                        <h3 class="titulo">Sementes de milho</h3>
-                        <p class="preco">R$ 150,00</p>
-                        <a href="/detalhes" class="btn-anuncio">Ver anúncio</a>
+        <main class="conteudo-perfil">
+            <div class="card-usuario">
+                <div class="user-header">
+                    <div class="foto-perfil">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="user-titles">
+                        <h1 class="nome-display">Pedro</h1>
+                        <div class="badges">
+                            <span class="badge">Vendedor</span>
+                            <span class="badge">Comprador</span>
+                        </div>
                     </div>
                 </div>
 
-                </div> </main>
+                <div class="user-grid">
+                    <div class="info-item">
+                        <label><i class="fa-solid fa-envelope"></i> E-mail</label>
+                        <p>pedro@pedro.com</p>
+                    </div>
+                    <div class="info-item">
+                        <label><i class="fa-solid fa-phone"></i> Telefone</label>
+                        <p>(49) 98842-0670</p>
+                    </div>
+                    <div class="info-item">
+                        <label><i class="fa-solid fa-wheat-awn"></i> Propriedade</label>
+                        <p>Recanto das Emas</p>
+                    </div>
+                    <div class="info-item">
+                        <label><i class="fa-solid fa-location-dot"></i> Endereço</label>
+                        <p>teste, 2, teste</p>
+                    </div>
+                    <div class="info-item full-width pix-highlight">
+                        <label><i class="fa-brands fa-pix"></i> Chave PIX</label>
+                        <p>999.999.999-72</p>
+                    </div>
+                </div>
 
-    </div> <script src="./public/menu-lateral.js" defer></script>
-    
+                <div class="user-actions">
+                    <a href="meus-pedidos" class="btn-perfil btn-pedidos">
+                        <i class="fa-solid fa-box-open"></i> Meus Pedidos
+                    </a>
+                    <a class="btn-perfil btn-anuncios" href="meus-anuncios">
+                        <i class="fa-solid fa-bullhorn"></i> Meus Anúncios
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./public/menu-lateral.js" defer></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #dadada; 
+    background-color: #f0f0f0; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,6 +36,7 @@ body {
     border-radius: 50%;
     text-decoration: none;
     font-size: 1.7rem;
+   
 }
 
 .container-anuncio {
@@ -43,10 +44,11 @@ body {
     align-items: flex-start;
     gap: 40px;
    
-    
+    width: 100%;   
     max-width: 95%;
     margin: 0 auto;
     padding: 40px;
+     animation: fade 0.5s ease-in-out;
 }
 
 
@@ -70,6 +72,7 @@ flex: 4;
 border-radius: 20px;
 border: 5px solid #417205;
 
+
 }
 
 .titulo {
@@ -87,9 +90,26 @@ border: 5px solid #417205;
     margin-bottom: 6px;
 }
 
+.alinhar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;            
+    width: 100%;
+    margin-top: 5%;                    
+    margin-bottom: 5%;             
+}
+
+.qtd-estoque {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #417205;
+    background-color: #d6d6d6;
+    border-radius: 10px;
+    padding: 10px;
+}
 .data-anuncio {
     font-size: 1.3rem;
- margin-bottom: 5%;
+ 
   font-optical-sizing: auto;
   font-weight: 500;
   color: #1c3607;
@@ -99,14 +119,25 @@ border: 5px solid #417205;
 
 
 .categoria {
-    margin-bottom: 3%;
+    margin-bottom: 5%;
+    display: flex;
+     gap: 2%;
+    align-items: center;
+}
+
+.propriedade-text {
+   background-color: #d6d6d6;
+    padding: 7px;
+    border-radius: 10px;
+    color: #212529;
+    width: fit-content; 
 }
 
 .categoria-text {
-    background-color: #c9c9c9;
+    background-color: #d6d6d6;
     padding: 7px;
     border-radius: 10px;
-    color: #1c3607;
+    color: #212529;
     width: fit-content; 
 }
 
@@ -116,14 +147,14 @@ border: 5px solid #417205;
  margin-bottom: 5%;
   font-optical-sizing: auto;
   font-weight: 500;
-  color: #1c3607;
+  color: #212529;
     padding: 10px;
     border-radius: 20px;
-  background-color: #c9c9c9;
+  background-color: #d6d6d6;
 }
 
 .vendedor-info {
-    background-color: #c9c9c9;
+    background-color:#d6d6d6;
     width: fit-content; 
     padding: 10px;
     border-radius: 10px;
@@ -131,7 +162,47 @@ border: 5px solid #417205;
   font-weight: 600;
   color: #1c3607;
   font-size: 1.2rem;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
+}
+.comprar-row {
+    display: flex;
+    align-items: center;
+    gap: 29px;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+.comprar-row .button {
+    flex: 1;
+    width: auto;
+    margin: 0;
+}
+
+.quantidade-comprar {
+    display: flex;
+    align-items: center;
+    gap: 10px;           
+    
+    font-size: 1.5rem;
+    color: #1c3607;
+    font-weight: bold;
+}
+
+.quantidade-comprar input[type="number"] {
+    width: 80px;         
+    padding: 10px;
+    border: 2px solid #c9c9c9;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-family: "Quicksand", sans-serif;
+    text-align: center;  
+    outline: none;
+    color: #212529;
+}
+
+
+.quantidade-comprar input[type="number"]:focus {
+    border-color: #417205;
 }
 
 
@@ -251,9 +322,238 @@ border: 5px solid #417205;
 
 
 
+.btn-voltar-simples {
+    background: none;
+    border: none;
+    color: #417205;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
- 
+.btn-voltar-simples:hover {
+ font-size: 1.6rem;
+   
+}
+
+.titulo-compra {
+    font-size: 3rem;
+    color: #417205;
+    margin-bottom: 5px;
+}
+
+.resumo-compra {
+    font-size: 1.8rem;
+    color: #1c3607;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #c9c9c9;
+}
+
+.row{
+   display: flex;
+    align-items: center;
+    gap: 10px;
+     border-bottom: 2px solid #c9c9c9;
+     margin-bottom: 3%;
+    
+
+}
+.valor-unit {
+  color: #1c3607;
+}
+
+.valor-total {
+  color: #1c3607;
+}
 
 
+.form-compra {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.form-compra label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1c3607;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.form-compra input, .form-compra select {
+    padding: 12px;
+    border: 2px solid #c9c9c9;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    outline: none;
+    font-family: "Quicksand", sans-serif;
+    margin-bottom: 20px;
+}
+
+.form-compra input:focus, .form-compra select:focus {
+    border-color: #417205;
+}
+
+.form-compra input[readonly] {
+    background-color: #e9ecef; 
+    color: #666666;           
+    cursor: not-allowed;        
+    border-color: #d1d1d1;  
+    font-size: 1.5rem; 
+}
 
 
+.btn-comprar {
+    background-color:#1c3607; 
+    color: white;
+    border: none;
+    padding: 20px; 
+    border-radius:20px; 
+    font-size: 1.5rem;   
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin-top: 3%;
+}
+
+
+.btn-comprar:hover {
+    background-color: #4e8a06; 
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 20px rgba(65, 114, 5, 0.4); 
+}
+
+
+.btn-comprar:active {
+    transform: translateY(2px); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+
+.carrossel {
+    position: relative;
+    width: 100%;
+    height: 90vh; 
+    border-radius: 12px;
+    overflow: hidden; 
+}
+
+
+.slide {
+    display: none; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.slide.ativo {
+    display: block;
+    animation: fade 0.5s ease-in-out;
+}
+
+@keyframes fade {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+.btn-carrossel {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.4); 
+    border: none;
+    border-radius: 0 8px 8px 0;
+    transition: background-color 0.3s;
+    user-select: none;
+}
+
+
+.btn-carrossel.next {
+    right: 0;
+    border-radius: 8px 0 0 8px;
+}
+
+
+.btn-carrossel:hover {
+    background-color: rgba(65, 114, 5, 0.9);
+}
+
+#aba-sucesso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 0 40px;
+    animation: fadeIn 0.5s ease; 
+}
+
+.icone-sucesso {
+    font-size: 6rem;
+    color: #1a7225;
+    margin-bottom: 20px;
+}
+
+.titulo-sucesso {
+    color: #1c3607;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.texto-sucesso {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.btn-meus-pedidos {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background-color: #1a7225;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-bottom: 20px;
+}
+
+.btn-meus-pedidos:hover {
+    background-color: #1c3607;
+    transform: translateY(-2px);
+}
+
+.link-home {
+    color: #417205;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.link-home:hover {
+    text-decoration: underline;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

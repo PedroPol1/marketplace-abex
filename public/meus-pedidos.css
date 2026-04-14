@@ -1,0 +1,131 @@
+
+.conteudo-pedidos {
+    flex: 1; 
+    padding: 40px 5%; 
+    background-color: #F8F9FA; 
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+.cabecalho-pedidos {
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 15px;
+}
+
+.cabecalho-pedidos h1 {
+    color: #1a7225;
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cabecalho-pedidos p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.lista-pedidos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.card-pedido {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    gap: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s;
+}
+
+.card-pedido:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.img-pedido {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.info-pedido {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-pedido h2 {
+    color: #1c3607;
+    font-size: 1.5rem;
+}
+
+.vendedor {
+    color: #417205;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.data {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.status-pedido {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinha tudo à direita */
+    gap: 10px;
+    min-width: 180px;
+}
+
+.valor-pedido {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #1c3607;
+}
+
+.btn-detalhes-pedido {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #1a7225;
+    border: 2px solid #1a7225;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-detalhes-pedido:hover {
+    background-color: #1a7225;
+    color: #fff;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-concluido {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-pendente {
+    background-color: #fff3cd;
+    color: #856404;
+}

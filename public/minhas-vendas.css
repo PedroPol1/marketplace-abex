@@ -1,0 +1,160 @@
+
+.conteudo-vendas {
+    flex: 1; 
+    padding: 40px 5%; 
+    background-color: #F8F9FA; 
+    min-height: calc(100vh - 80px);
+   
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+.cabecalho-vendas {
+    width: 100%;
+    max-width: 1000px; 
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 15px;
+}
+
+.cabecalho-vendas h1 {
+    color: #1a7225;
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cabecalho-vendas p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+
+.lista-vendas {
+    width: 100%;
+    max-width: 1000px; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-venda {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px; 
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    gap: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9ecef;
+}
+
+
+.info-comprador {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-right: 1px solid #eee;
+    padding-right: 15px;
+}
+
+.avatar-comprador {
+    font-size: 3rem;
+    color: #ccc;
+}
+
+.info-comprador h3 {
+    color: #1c3607;
+    font-size: 1.2rem;
+}
+
+.info-comprador p {
+    color: #1a7225;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+
+.info-produto-venda {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.img-venda {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.info-produto-venda h4 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.data-venda {
+    color: #777;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+.valor-venda {
+    color: #1c3607;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-top: 5px;
+}
+
+
+.gestao-status {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-left: 1px solid #eee;
+    padding-left: 20px;
+}
+
+.gestao-status label {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: bold;
+}
+
+.select-status {
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+
+.status-pagamento { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
+.status-retirada { background-color: #cce5ff; color: #004085; border-color: #b8daff; }
+.status-concluido { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+.status-cancelado { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+
+.btn-contato {
+    margin-top: 5px;
+    padding: 8px;
+    background-color: transparent;
+    color: #1a7225;
+    border: 1px solid #1a7225;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-contato:hover {
+    background-color: #1a7225;
+    color: white;
+}
