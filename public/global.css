@@ -1,0 +1,89 @@
+:root {
+    /* Color Palette */
+    --color-bg: #F8F9FA;
+    --color-surface: #FFFFFF;
+    --color-surface-hover: #ececec;
+    --color-primary: #1a7225;
+    --color-primary-light: #339c41;
+    --color-primary-dark: #1c3607;
+    --color-secondary: #417205;
+    --color-secondary-light: #eaf1e3;
+    --color-accent: #0e93d6;
+    
+    /* Text Colors */
+    --text-main: #212529;
+    --text-muted: #666666;
+    --text-light: #FFFFFF;
+
+    /* Status Colors */
+    --color-danger: #e74c3c;
+    --color-border: #e9ecef;
+    --color-border-dark: #c9c9c9;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    /* Radii */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 50px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+}
+
+/* Global Reset/Base if needed, typically in component files but good here */
+body {
+    background-color: var(--color-bg);
+    color: var(--text-main);
+    font-family: "Quicksand", sans-serif;
+}
+
+/* Common utilities for glass/premium feel */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Base button standards */
+.btn-global-primary {
+    background-color: var(--color-primary);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: bold;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-global-primary:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-global-secondary {
+    background-color: var(--color-secondary);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: bold;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-global-secondary:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}

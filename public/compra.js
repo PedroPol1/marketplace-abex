@@ -1,4 +1,4 @@
-const btnComprar = document.querySelector('.button');
+const btnComprar = document.getElementById('btn-comprar-acao');
         const btnVoltar = document.getElementById('btn-voltar-detalhes');
         const abaDetalhes = document.getElementById('aba-detalhes');
         const abaCompra = document.getElementById('aba-compra');
