@@ -28,7 +28,7 @@
     gap: 12px;
 }
 
-/* --- Área de Upload --- */
+
 .upload-container {
     margin-bottom: 35px;
 }
@@ -61,7 +61,7 @@
     margin-bottom: 15px;
 }
 
-/* --- Grid do Formulário --- */
+
 .grid-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -84,7 +84,9 @@
     font-size: 1rem;
 }
 
-.campo input, .campo select, .campo textarea {
+.campo input,
+.campo select,
+.campo textarea {
     padding: 15px;
     border: 1px solid var(--color-border-dark);
     border-radius: var(--radius-sm);
@@ -95,13 +97,14 @@
     font-family: inherit;
 }
 
-.campo input:focus, .campo textarea:focus, .campo select:focus {
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus {
     border-color: var(--color-primary);
     background-color: var(--color-surface);
     box-shadow: 0 0 0 3px rgba(65, 114, 5, 0.1);
 }
 
-/* --- Botões --- */
 .form-actions {
     margin-top: 50px;
     display: flex;
@@ -120,6 +123,7 @@
     cursor: pointer;
     transition: all var(--transition-fast);
 }
+
 .btn-cancelar:hover {
     background: var(--color-border-dark);
 }

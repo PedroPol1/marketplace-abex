@@ -103,13 +103,13 @@
                     <input type="text" value="<%= produto.endereco_vendedor %>" readonly>
 
                     <label>Forma de Pagamento</label>
-                    <select>
-                        <option>PIX</option>
-                        <option>Cartão de Crédito</option>
-                        <option>Boleto</option>
+                    <select id="forma-pagamento">
+                        <option value="PIX">PIX</option>
+                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                        <option value="Boleto">Boleto</option>
                     </select>
 
-                    <button type="button" id="btn-confirmar" class="btn-comprar">Confirmar Pagamento</button>
+                    <button type="button" id="btn-confirmar" class="btn-comprar" data-produto-id="<%= produto.id %>">Confirmar Pagamento</button>
                 </form>
             </div>
             <div id="aba-sucesso" style="display: none;">

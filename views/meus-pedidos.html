@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <link rel="stylesheet" href="./public/home.css">
     <link rel="stylesheet" href="./public/meus-pedidos.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/public/global.css">
 </head>
+
 <body>
-    
+
     <header class="top-bar">
         <a href="home">
-    <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
-    </a>
-    <div class="top-bar-icons">
-        <a href="/notificacoes" class="icon-top" title="Notificações">
-            <i class="fa-regular fa-bell"></i>
-            <span class="badge-notificacao">3</span> </a>
-        
-        <% if ((typeof sessionUser !== 'undefined' && sessionUser.userType === 'vendedor') || (typeof user !== 'undefined' && user.tipo === 'vendedor')) { %>
-        <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
-            <i class="fa-solid fa-handshake"></i>
+            <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
         </a>
-        <% } %>
-    </div>
-</header>
+        <div class="top-bar-icons">
+            <a href="/notificacoes" class="icon-top" title="Notificações">
+                <i class="fa-regular fa-bell"></i>
+                <% if (typeof unreadNotificationsCount !== 'undefined' && unreadNotificationsCount > 0) { %>
+                    <span class="badge-notificacao"><%= unreadNotificationsCount %></span>
+                <% } %>
+            </a>
+
+            <% if ((typeof sessionUser !=='undefined' && sessionUser.userType==='vendedor' ) || (typeof user
+                !=='undefined' && user.tipo==='vendedor' )) { %>
+                <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
+                    <i class="fa-solid fa-handshake"></i>
+                </a>
+                <% } %>
+        </div>
+    </header>
 
 
     <div class="layout-principal">
@@ -49,30 +55,24 @@
             <hr class="linha">
 
             <nav class="section">
-                <% if (typeof sessionUser !== 'undefined' && sessionUser.userType === 'vendedor') { %>
-                <a href="novo-anuncio" class="section-btn">
-                    <i class="fas fa-plus"></i> NOVO ANUNCIO
-                </a>
-                <% } %>
+                <% if (typeof sessionUser !=='undefined' && sessionUser.userType==='vendedor' ) { %>
+                    <a href="novo-anuncio" class="section-btn">
+                        <i class="fas fa-plus"></i> NOVO ANUNCIO
+                    </a>
+                    <% } %>
 
-                <a href="sua-conta" class="section-btn">
-                    <i class="far fa-user"></i> SUA CONTA
-                </a>
+                        <a href="sua-conta" class="section-btn">
+                            <i class="far fa-user"></i> SUA CONTA
+                        </a>
 
-                <a href="/logout" class="section-btn" style="color: #e74c3c; margin-top: 10px;">
-                    <i class="fas fa-sign-out-alt"></i> SAIR DA CONTA
-                </a>
+                        <a href="/logout" class="section-btn" style="color: #e74c3c; margin-top: 10px;">
+                            <i class="fas fa-sign-out-alt"></i> SAIR DA CONTA
+                        </a>
             </nav>
 
             <hr class="linha">
 
-            <nav class="section">
-                <a href="localização" class="section-btn">
-                    <i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO
-                </a>
-            </nav>
-            
-            <hr class="linha">
+
 
             <nav class="section">
                 <div class="section-btn" onclick="abrirCategorias()" style="cursor: pointer;">
@@ -94,43 +94,65 @@
             </div>
 
             <div class="lista-pedidos">
-                
-                <div class="card-pedido">
-                    <img src="public/fotos/semente.avif" alt="Semente de Milho" class="img-pedido">
-                    
-                    <div class="info-pedido">
-                        <h2>Sementes de milho</h2>
-                        <p class="vendedor"><i class="fa-solid fa-shop"></i> Seu Zé Produtos Agrícolas</p>
-                        <p class="data">Realizado em: <strong>12/10/2023</strong></p>
-                    </div>
-
-                    <div class="status-pedido">
-                        <span class="badge status-concluido">Concluído</span>
-                        <p class="valor-pedido">R$ 300,00</p>
-                    </div>
-                </div>
-
-                <div class="card-pedido">
-                    <img src="public/fotos/semente.avif" alt="Outro Produto" class="img-pedido">
-                    
-                    <div class="info-pedido">
-                        <h2>Adubo Orgânico 50kg</h2>
-                        <p class="vendedor"><i class="fa-solid fa-shop"></i> Fazenda Esperança</p>
-                        <p class="data">Realizado em: <strong>15/10/2023</strong></p>
-                    </div>
-
-                    <div class="status-pedido">
-                        <span class="badge status-pendente">Aguardando Separação</span>
-                        <p class="valor-pedido">R$ 120,00</p>
+                <% if (typeof pedidos !=='undefined' && pedidos.length> 0) { %>
+                    <% pedidos.forEach(pedido=> { %>
+                        <% 
+                        const currentStatus = Array.isArray(pedido.status) ? pedido.status[0] : (pedido.status || 'pagamento pendente');
                         
-                    </div>
-                </div>
+                        let statusLabel = 'Aguardando Separação';
+                        let statusClass = 'status-pendente';
+                        if (currentStatus === 'retirada') {
+                            statusLabel = 'Aguardando Retirada';
+                            statusClass = 'status-retirada';
+                        } else if (currentStatus === 'concluido') {
+                            statusLabel = 'Concluído';
+                            statusClass = 'status-concluido';
+                        } else if (currentStatus === 'cancelado') {
+                            statusLabel = 'Cancelado';
+                            statusClass = 'status-cancelado';
+                        }
 
+                        const produtoFoto = (pedido.foto && pedido.foto.url) ? pedido.foto.url : (pedido.produto_foto || '/public/fotos/agro-direto.png');
+                        const produtoTitulo = (pedido.itens && pedido.itens.titulo) ? pedido.itens.titulo : (pedido.produto_titulo || 'Produto');
+                        const valorTotal = pedido.total || pedido.valor_total || 0;
+                        %>
+                            <div class="card-pedido">
+                                <img src="<%= produtoFoto %>" alt="<%= produtoTitulo %>"
+                                    class="img-pedido">
+
+                                <div class="info-pedido">
+                                    <h2>
+                                        <%= produtoTitulo %>
+                                    </h2>
+                                    <p class="vendedor"><i class="fa-solid fa-shop"></i>
+                                        <%= pedido.vendedor_nome %>
+                                    </p>
+                                    <p class="data">Realizado em: <strong>
+                                            <%= new Date(pedido.data_pedido._seconds ? pedido.data_pedido._seconds *
+                                                1000 : pedido.data_pedido).toLocaleDateString('pt-BR') %>
+                                        </strong></p>
+                                </div>
+
+                                <div class="status-pedido">
+                                    <span class="badge <%= statusClass %>">
+                                        <%= statusLabel %>
+                                    </span>
+                                    <p class="valor-pedido">R$ <%= Number(valorTotal).toFixed(2).replace('.', ',' ) %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% }) %>
+                                <% } else { %>
+                                    <p
+                                        style="text-align: center; color: #7f8c8d; padding: 40px; width: 100%; font-family: 'Quicksand', sans-serif;">
+                                        Você ainda não realizou nenhum pedido.</p>
+                                    <% } %>
             </div>
         </main>
 
     </div>
-    </div> <script src="./public/menu-lateral.js" defer></script>
+    <script src="./public/menu-lateral.js" defer></script>
 
 </body>
+
 </html>

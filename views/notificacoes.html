@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notificações - Agro Direto</title>
-    
+
     <link rel="stylesheet" href="./public/home.css">
     <link rel="stylesheet" href="./public/notificacoes.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/public/global.css">
 </head>
+
 <body>
-    
+
     <header class="top-bar">
         <a href="home">
             <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
@@ -23,13 +25,16 @@
         <div class="top-bar-icons">
             <a href="/notificacoes" class="icon-top" title="Notificações">
                 <i class="fa-regular fa-bell"></i>
-                <span class="badge-notificacao">2</span> 
+                <% if (typeof unreadNotificationsCount !== 'undefined' && unreadNotificationsCount > 0) { %>
+                    <span class="badge-notificacao"><%= unreadNotificationsCount %></span>
+                <% } %>
             </a>
-            <% if ((typeof sessionUser !== 'undefined' && sessionUser.userType === 'vendedor') || (typeof user !== 'undefined' && user.tipo === 'vendedor')) { %>
-            <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
-                <i class="fa-solid fa-handshake"></i>
-            </a>
-            <% } %>
+            <% if ((typeof sessionUser !=='undefined' && sessionUser.userType==='vendedor' ) || (typeof user
+                !=='undefined' && user.tipo==='vendedor' )) { %>
+                <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
+                    <i class="fa-solid fa-handshake"></i>
+                </a>
+                <% } %>
         </div>
     </header>
 
@@ -48,30 +53,24 @@
             <hr class="linha">
 
             <nav class="section">
-                <% if (typeof sessionUser !== 'undefined' && sessionUser.userType === 'vendedor') { %>
-                <a href="novo-anuncio" class="section-btn">
-                    <i class="fas fa-plus"></i> NOVO ANUNCIO
-                </a>
-                <% } %>
+                <% if (typeof sessionUser !=='undefined' && sessionUser.userType==='vendedor' ) { %>
+                    <a href="novo-anuncio" class="section-btn">
+                        <i class="fas fa-plus"></i> NOVO ANUNCIO
+                    </a>
+                    <% } %>
 
-                <a href="sua-conta" class="section-btn">
-                    <i class="far fa-user"></i> SUA CONTA
-                </a>
+                        <a href="sua-conta" class="section-btn">
+                            <i class="far fa-user"></i> SUA CONTA
+                        </a>
 
-                <a href="/logout" class="section-btn" style="color: #e74c3c; margin-top: 10px;">
-                    <i class="fas fa-sign-out-alt"></i> SAIR DA CONTA
-                </a>
+                        <a href="/logout" class="section-btn" style="color: #e74c3c; margin-top: 10px;">
+                            <i class="fas fa-sign-out-alt"></i> SAIR DA CONTA
+                        </a>
             </nav>
 
             <hr class="linha">
 
-            <nav class="section">
-                <a href="localização" class="section-btn">
-                    <i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO
-                </a>
-            </nav>
-            
-            <hr class="linha">
+
 
             <nav class="section">
                 <div class="section-btn" onclick="abrirCategorias()" style="cursor: pointer;">
@@ -86,59 +85,77 @@
         </aside>
 
         <main class="conteudo-notificacoes">
-            
+
             <div class="cabecalho-notificacoes">
                 <h1><i class="fa-regular fa-bell"></i> Suas Notificações</h1>
                 <p>Acompanhe atualizações de suas compras e vendas no marketplace.</p>
             </div>
 
             <div class="lista-notificacoes">
-                
-                <!-- Notificação de Venda (Vendedor) -->
-                <div class="card-notificacao nao-lida">
-                    <div class="icone-notificacao">
-                        <i class="fa-solid fa-store"></i>
-                    </div>
-                    <div class="info-notificacao">
-                        <h2 class="titulo-notificacao">Nova Venda Efetuada!</h2>
-                        <p class="descricao-notificacao">Usuário comprou <strong>1x Sementes de Milho</strong>. Confirme o pagamento e prepare o produto para retirada.</p>
-                        <span class="data-notificacao">Há 10 minutos</span>
-                    </div>
-                    <a href="/minhas-vendas" class="btn-acao">Gerenciar Venda</a>
-                </div>
+                <% if (typeof notificacoes !== 'undefined' && notificacoes.length > 0) { %>
+                    <% notificacoes.forEach(notificacao => {
+                        let iconClass = 'fa-solid fa-bell';
+                        if (notificacao.tipo === 'venda') {
+                            iconClass = 'fa-solid fa-store';
+                        } else if (notificacao.tipo === 'status_update') {
+                            iconClass = 'fa-solid fa-box-open';
+                        } else if (notificacao.tipo === 'pedido_concluido') {
+                            iconClass = 'fa-solid fa-check';
+                        }
 
-                <!-- Notificação de Status (Comprador) -->
-                <div class="card-notificacao nao-lida">
-                    <div class="icone-notificacao">
-                        <i class="fa-solid fa-box-open"></i>
-                    </div>
-                    <div class="info-notificacao">
-                        <h2 class="titulo-notificacao">Atualização de Pedido</h2>
-                        <p class="descricao-notificacao">Seu pedido de <strong>Trator Agrícola Usado</strong> mudou o status para <strong>Pronto para Retirada</strong>.</p>
-                        <span class="data-notificacao">Há 2 horas</span>
-                    </div>
-                    <a href="/meus-pedidos" class="btn-acao">Ver Pedido</a>
-                </div>
+                        let dataExibicao = new Date();
+                        if (notificacao.data) {
+                            if (notificacao.data._seconds) {
+                                dataExibicao = new Date(notificacao.data._seconds * 1000);
+                            } else if (notificacao.data.toDate) {
+                                dataExibicao = notificacao.data.toDate();
+                            } else {
+                                dataExibicao = new Date(notificacao.data);
+                            }
+                        }
 
-                <!-- Notificação Lida Exemplo -->
-                <div class="card-notificacao">
-                    <div class="icone-notificacao">
-                        <i class="fa-solid fa-box-open"></i>
-                    </div>
-                    <div class="info-notificacao">
-                        <h2 class="titulo-notificacao">Pedido Concluído</h2>
-                        <p class="descricao-notificacao">Parabéns! Sua compra de <strong>Adubo Orgânico 50kg</strong> foi finalizada com sucesso.</p>
-                        <span class="data-notificacao">Ontem, 14:30</span>
-                    </div>
-                    <a href="/meus-pedidos" class="btn-acao" style="background-color: var(--color-border-dark); color: var(--text-main);">Ver Recibo</a>
-                </div>
+                        // Helper inline function inside loop
+                        function getFriendlyDate(d) {
+                            const diffMs = new Date() - d;
+                            const diffMins = Math.floor(diffMs / 60000);
+                            const diffHrs = Math.floor(diffMins / 60);
+                            if (diffMins < 1) return 'Agora mesmo';
+                            if (diffMins < 60) return `Há ${diffMins} min`;
+                            if (diffHrs < 24) return `Há ${diffHrs} h`;
+                            if (diffHrs < 48) return 'Ontem';
+                            return d.toLocaleDateString('pt-BR') + ' às ' + d.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
+                        }
 
+                        const dataExibidaFormatada = getFriendlyDate(dataExibicao);
+                    %>
+                    <div class="card-notificacao <%= notificacao.lida ? '' : 'nao-lida' %>">
+                        <div class="icone-notificacao">
+                            <i class="<%= iconClass %>"></i>
+                        </div>
+                        <div class="info-notificacao">
+                            <h2 class="titulo-notificacao"><%= notificacao.titulo %></h2>
+                            <p class="descricao-notificacao"><%- notificacao.descricao %></p>
+                            <span class="data-notificacao"><%= dataExibidaFormatada %></span>
+                        </div>
+                        <% if (notificacao.link) { %>
+                            <a href="<%= notificacao.link %>" class="btn-acao" <%= notificacao.tipo === 'pedido_concluido' ? 'style="background-color: var(--color-border-dark); color: var(--text-main);"' : '' %>>
+                                <%= notificacao.tipo === 'venda' ? 'Gerenciar Venda' : (notificacao.tipo === 'pedido_concluido' ? 'Ver Recibo' : 'Ver Pedido') %>
+                            </a>
+                        <% } %>
+                    </div>
+                    <% }) %>
+                <% } else { %>
+                    <p style="text-align: center; color: #7f8c8d; padding: 40px; width: 100%; font-family: 'Quicksand', sans-serif;">
+                        Você não tem nenhuma notificação no momento.
+                    </p>
+                <% } %>
             </div>
 
         </main>
 
-    </div> 
+    </div>
 
     <script src="./public/menu-lateral.js" defer></script>
 </body>
+
 </html>

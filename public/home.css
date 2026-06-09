@@ -6,31 +6,31 @@
 }
 
 body {
-    background-color: var(--color-bg); 
+    background-color: var(--color-bg);
 }
 
 .top-bar {
     background-color: var(--color-primary);
-    padding: 0 30px; 
+    padding: 0 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: var(--shadow-soft);
-    height: 80px; 
+    height: 80px;
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
 }
 
-.top-bar > a {
+.top-bar>a {
     display: flex;
     align-items: center;
-    height: 100%; 
-    width: 13%;   
-    min-width: 160px; 
+    height: 100%;
+    width: 13%;
+    min-width: 160px;
     text-decoration: none;
 }
 
 .logo {
-    width: 100%; 
+    width: 100%;
     height: auto;
     display: block;
     margin-left: 18%;
@@ -38,7 +38,7 @@ body {
 
 .top-bar-icons {
     display: flex;
-    gap: 60px; 
+    gap: 60px;
     align-items: center;
     margin-right: 3%;
 }
@@ -47,13 +47,13 @@ body {
     color: var(--text-light);
     font-size: 1.6rem;
     text-decoration: none;
-    position: relative; 
+    position: relative;
     transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
 .icon-top:hover {
-    color: var(--color-secondary-light); 
-    transform: scale(1.1); 
+    color: var(--color-secondary-light);
+    transform: scale(1.1);
 }
 
 
@@ -61,14 +61,15 @@ body {
     position: absolute;
     top: -6px;
     right: -8px;
-    background-color: var(--color-danger); /* Vermelho vivo */
+    background-color: var(--color-danger);
     color: var(--text-light);
     font-size: 0.75rem;
     font-weight: bold;
     padding: 2px 6px;
     border-radius: var(--radius-pill);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .linha {
     border: none;
     border-top: 1px solid var(--color-border-dark);
@@ -76,19 +77,20 @@ body {
 
 
 .menu-lateral {
-    position: sticky; 
+    position: sticky;
     top: 80px;
     width: 20%;
     min-width: 300px;
     height: calc(100vh - 80px);
-    background-color: var(--color-surface); 
+    background-color: var(--color-surface);
     display: flex;
     box-shadow: var(--shadow-soft);
-    overflow-y: auto; 
+    overflow-y: auto;
     flex-direction: column;
     padding-top: 10px;
     border-right: 1px solid var(--color-border);
 }
+
 .mercado {
     justify-content: center;
     display: flex;
@@ -117,6 +119,7 @@ body {
     border: 1px solid var(--color-border);
     transition: box-shadow var(--transition-fast);
 }
+
 .pesquisa:focus-within {
     box-shadow: 0 0 0 2px var(--color-primary-light);
 }
@@ -138,59 +141,60 @@ body {
     background-color: var(--color-bg);
     border-radius: var(--radius-md);
     margin-top: 10px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
     border: 1px solid transparent;
 }
 
 .section-btn:hover {
-   background-color: var(--color-primary-light);
-   color: var(--text-light);
-   transform: translateX(5px);
-   box-shadow: var(--shadow-soft);
+    background-color: var(--color-primary-light);
+    color: var(--text-light);
+    transform: translateX(5px);
+    box-shadow: var(--shadow-soft);
 }
 
 .sub-categorias {
-    display: none; 
+    display: none;
     flex-direction: column;
     margin-top: 5px;
     gap: 8px;
 }
 
 .sub-categorias.mostrar {
-    display: flex; 
+    display: flex;
 }
 
 .sub-item {
     font-size: 1.1rem;
-    background-color: transparent; 
+    background-color: transparent;
     padding: 10px;
     box-shadow: none;
 }
 
-.section-btn i{
-    transition: transform var(--transition-fast); 
+.section-btn i {
+    transition: transform var(--transition-fast);
     margin-right: 10px;
 }
 
-.girar-seta{
-    transform: rotate(90deg); 
+.girar-seta {
+    transform: rotate(90deg);
 }
+
 .grid-anuncios {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px; 
+    gap: 30px;
     padding: 30px;
-    flex: 1; 
+    flex: 1;
 
 }
 
 .card-anuncios {
     background-color: var(--color-surface);
-    border-radius: var(--radius-lg); 
+    border-radius: var(--radius-lg);
     border: 1px solid var(--color-border);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
-    overflow: hidden; 
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -204,8 +208,8 @@ body {
 
 .imagem-card {
     width: 100%;
-    height: 250px; 
-    object-fit: cover; 
+    height: 250px;
+    object-fit: cover;
 }
 
 
@@ -213,7 +217,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .titulo {
@@ -226,20 +230,20 @@ body {
 .preco {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--color-secondary); 
+    color: var(--color-secondary);
     margin-bottom: 20px;
 }
 
 
 .btn-anuncio {
     text-align: center;
-    background-color: var(--color-accent); 
+    background-color: var(--color-accent);
     color: var(--text-light);
     text-decoration: none;
     padding: 14px;
     border-radius: var(--radius-md);
     font-weight: 700;
-    margin-top: auto; 
+    margin-top: auto;
     transition: all var(--transition-fast);
 }
 
@@ -251,11 +255,11 @@ body {
 
 .layout-principal {
     display: flex;
-    align-items: flex-start; 
+    align-items: flex-start;
     width: 100%;
 }
 
 .conteudo-principal {
-    flex: 1; 
+    flex: 1;
     width: 100%;
 }

@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./public/home.css">
     <link rel="stylesheet" href="./public/perfil.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/public/global.css">
 </head>
+
 <body>
-  <header class="top-bar">
+    <header class="top-bar">
         <a href="home">
-    <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
-    </a>
-    <div class="top-bar-icons">
-        <a href="/notificacoes" class="icon-top" title="Notificações">
-            <i class="fa-regular fa-bell"></i>
-            <span class="badge-notificacao">3</span> </a>
-        
-        <% if (user.tipo === 'vendedor') { %>
-        <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
-            <i class="fa-solid fa-handshake"></i>
+            <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
         </a>
-        <% } %>
-    </div>
-</header>
+        <div class="top-bar-icons">
+            <a href="/notificacoes" class="icon-top" title="Notificações">
+                <i class="fa-regular fa-bell"></i>
+                <% if (typeof unreadNotificationsCount !== 'undefined' && unreadNotificationsCount > 0) { %>
+                    <span class="badge-notificacao"><%= unreadNotificationsCount %></span>
+                <% } %>
+            </a>
+
+            <% if (user.tipo==='vendedor' ) { %>
+                <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
+                    <i class="fa-solid fa-handshake"></i>
+                </a>
+                <% } %>
+        </div>
+    </header>
 
 
     <div class="layout-principal">
@@ -46,28 +51,23 @@
             <hr class="linha">
 
             <nav class="section">
-                <% if (typeof sessionUser !== 'undefined' && sessionUser.userType === 'vendedor') { %>
-                <a href="novo-anuncio" class="section-btn">
-                    <i class="fas fa-plus"></i> NOVO ANUNCIO
-                </a>
-                <% } %>
-                <a href="sua-conta" class="section-btn active">
-                    <i class="far fa-user"></i> SUA CONTA
-                </a>
+                <% if (typeof sessionUser !=='undefined' && sessionUser.userType==='vendedor' ) { %>
+                    <a href="novo-anuncio" class="section-btn">
+                        <i class="fas fa-plus"></i> NOVO ANUNCIO
+                    </a>
+                    <% } %>
+                        <a href="sua-conta" class="section-btn active">
+                            <i class="far fa-user"></i> SUA CONTA
+                        </a>
 
-                <a href="/logout" class="section-btn" style="color: #e74c3c; margin-top: 10px;">
-                    <i class="fas fa-sign-out-alt"></i> SAIR DA CONTA
-                </a>
+                        <a href="/logout" class="section-btn" style="color: #e74c3c; margin-top: 10px;">
+                            <i class="fas fa-sign-out-alt"></i> SAIR DA CONTA
+                        </a>
             </nav>
 
             <hr class="linha">
 
-            <nav class="section">
-                <a href="localização" class="section-btn">
-                    <i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO
-                </a>
-            </nav>
-            <hr class="linha">
+
 
             <nav class="section">
                 <div class="section-btn" onclick="abrirCategorias()" style="cursor: pointer;">
@@ -88,13 +88,15 @@
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <div class="user-titles">
-                        <h1 class="nome-display"><%= user.nome %></h1>
+                        <h1 class="nome-display">
+                            <%= user.nome %>
+                        </h1>
                         <div class="badges">
-                            <% if (user.tipo === 'vendedor') { %>
+                            <% if (user.tipo==='vendedor' ) { %>
                                 <span class="badge">Vendedor</span>
-                            <% } else { %>
-                                <span class="badge">Comprador</span>
-                            <% } %>
+                                <% } else { %>
+                                    <span class="badge">Comprador</span>
+                                    <% } %>
                         </div>
                     </div>
                 </div>
@@ -102,38 +104,48 @@
                 <div class="user-grid">
                     <div class="info-item">
                         <label><i class="fa-solid fa-envelope"></i> E-mail</label>
-                        <p><%= user.email %></p>
+                        <p>
+                            <%= user.email %>
+                        </p>
                     </div>
                     <div class="info-item">
                         <label><i class="fa-solid fa-phone"></i> Telefone</label>
-                        <p><%= user.telefone %></p>
+                        <p>
+                            <%= user.telefone %>
+                        </p>
                     </div>
-                    
-                    <% if (user.tipo === 'vendedor' && user.dados_vendedor) { %>
-                    <div class="info-item">
-                        <label><i class="fa-solid fa-wheat-awn"></i> Propriedade</label>
-                        <p><%= user.dados_vendedor['nome-propriedade'] || 'Não informada' %></p>
-                    </div>
-                    <div class="info-item">
-                        <label><i class="fa-solid fa-location-dot"></i> Endereço</label>
-                        <p><%= user.dados_vendedor.endereco || 'Não informado' %></p>
-                    </div>
-                    <div class="info-item full-width pix-highlight">
-                        <label><i class="fa-brands fa-pix"></i> Chave PIX</label>
-                        <p><%= user.dados_vendedor['chave-pix'] || 'Não informada' %></p>
-                    </div>
-                    <% } %>
+
+                    <% if (user.tipo==='vendedor' && user.dados_vendedor) { %>
+                        <div class="info-item">
+                            <label><i class="fa-solid fa-wheat-awn"></i> Propriedade</label>
+                            <p>
+                                <%= user.dados_vendedor['nome-propriedade'] || 'Não informada' %>
+                            </p>
+                        </div>
+                        <div class="info-item">
+                            <label><i class="fa-solid fa-location-dot"></i> Endereço</label>
+                            <p>
+                                <%= user.dados_vendedor.endereco || 'Não informado' %>
+                            </p>
+                        </div>
+                        <div class="info-item full-width pix-highlight">
+                            <label><i class="fa-brands fa-pix"></i> Chave PIX</label>
+                            <p>
+                                <%= user.dados_vendedor['chave-pix'] || 'Não informada' %>
+                            </p>
+                        </div>
+                        <% } %>
                 </div>
 
                 <div class="user-actions">
                     <a href="meus-pedidos" class="btn-perfil btn-pedidos">
                         <i class="fa-solid fa-box-open"></i> Meus Pedidos
                     </a>
-                    <% if (user.tipo === 'vendedor') { %>
-                    <a class="btn-perfil btn-anuncios" href="meus-anuncios">
-                        <i class="fa-solid fa-bullhorn"></i> Meus Anúncios
-                    </a>
-                    <% } %>
+                    <% if (user.tipo==='vendedor' ) { %>
+                        <a class="btn-perfil btn-anuncios" href="meus-anuncios">
+                            <i class="fa-solid fa-bullhorn"></i> Meus Anúncios
+                        </a>
+                        <% } %>
                 </div>
             </div>
         </main>
@@ -141,4 +153,5 @@
 
     <script src="./public/menu-lateral.js" defer></script>
 </body>
+
 </html>

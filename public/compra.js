@@ -20,10 +20,41 @@ const btnConfirmar = document.getElementById('btn-confirmar');
 
 if(btnConfirmar) {
     btnConfirmar.addEventListener('click', function() {
-        
-         abaComp.style.display = 'none';
-        
-        
-        abaSucesso.style.display = 'flex'; 
+        const produtoId = this.getAttribute('data-produto-id');
+        const quantidade = document.getElementById('quantidade').value;
+        const formaPagamento = document.getElementById('forma-pagamento').value;
+
+        btnConfirmar.disabled = true;
+        btnConfirmar.innerText = "Processando...";
+
+        fetch('/pedidos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                produtoId,
+                quantidade,
+                formaPagamento
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                abaComp.style.display = 'none';
+                abaSucesso.style.display = 'flex';
+            } else {
+                alert(data.error || "Erro ao realizar a compra.");
+                btnConfirmar.disabled = false;
+                btnConfirmar.innerText = "Confirmar Pagamento";
+            }
+        })
+        .catch(err => {
+            console.error("Erro na compra:", err);
+            alert("Erro de conexão ao processar compra.");
+            btnConfirmar.disabled = false;
+            btnConfirmar.innerText = "Confirmar Pagamento";
+        });
     });
 }

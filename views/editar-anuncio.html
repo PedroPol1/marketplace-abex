@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar Anúncio</title>
 
-    <link rel="stylesheet" href="./public/home.css">
-    <link rel="stylesheet" href="./public/novo-anuncio.css">
+    <link rel="stylesheet" href="/public/home.css">
+    <link rel="stylesheet" href="/public/novo-anuncio.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
 
 <body>
     <header class="top-bar">
-        <a href="home">
+        <a href="/home">
             <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
         </a>
         <div class="top-bar-icons">
@@ -28,7 +28,6 @@
                     <span class="badge-notificacao"><%= unreadNotificationsCount %></span>
                 <% } %>
             </a>
-
             <% if ((typeof sessionUser !=='undefined' && sessionUser.userType==='vendedor' ) || (typeof user
                 !=='undefined' && user.tipo==='vendedor' )) { %>
                 <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
@@ -37,7 +36,6 @@
                 <% } %>
         </div>
     </header>
-
 
     <div class="layout-principal">
         <aside class="menu-lateral">
@@ -54,11 +52,11 @@
 
             <nav class="section">
                 <% if (typeof sessionUser !=='undefined' && sessionUser.userType==='vendedor' ) { %>
-                    <a href="novo-anuncio" class="section-btn">
+                    <a href="/novo-anuncio" class="section-btn">
                         <i class="fas fa-plus"></i> NOVO ANUNCIO
                     </a>
                     <% } %>
-                        <a href="sua-conta" class="section-btn active">
+                        <a href="/sua-conta" class="section-btn">
                             <i class="far fa-user"></i> SUA CONTA
                         </a>
 
@@ -86,76 +84,82 @@
         <main class="conteudo-novo-anuncio">
             <div class="card-formulario">
                 <div class="header-form">
-                    <h1><i class="fa-solid fa-seedling"></i> Criar Novo Anúncio</h1>
-                    <p>Preencha os dados abaixo para colocar seu produto no mercado.</p>
+                    <h1><i class="fa-solid fa-pen-to-square"></i> Editar Anúncio</h1>
+                    <p>Atualize as informações do seu produto abaixo.</p>
                 </div>
 
-                <form class="form-anuncio" action="/anuncios" method="POST" enctype="multipart/form-data">
+                <form class="form-anuncio" action="/anuncios/editar/<%= produto.id %>" method="POST"
+                    enctype="multipart/form-data">
                     <div class="upload-container">
-                        <label>Fotos do Produto</label>
+                        <label>Fotos do Produto (Deixe em branco para manter as atuais)</label>
                         <div class="area-upload" id="drop-area"
                             onclick="document.getElementById('input-fotos').click()">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
-                            <p>Clique ou arraste as fotos aqui</p>
+                            <p>Clique ou arraste novas fotos aqui para substituir</p>
                             <input type="file" id="input-fotos" name="fotos" multiple accept="image/*" hidden>
                         </div>
                         <div id="image-preview" style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                            <% if (produto.fotos && produto.fotos.length> 0) { %>
+                                <% produto.fotos.forEach(foto=> { %>
+                                    <img src="<%= foto.url %>"
+                                        style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd;">
+                                    <% }) %>
+                                        <% } %>
                         </div>
                     </div>
 
                     <div class="grid-form">
                         <div class="campo full-width">
                             <label>Título do Anúncio</label>
-                            <input type="text" name="titulo" placeholder="Ex: Sementes de Milho Híbrido 1kg" required>
+                            <input type="text" name="titulo" value="<%= produto.titulo %>" required>
                         </div>
 
                         <div class="campo">
                             <label>Categoria</label>
                             <select name="categoria" required>
-                                <option value="sementes">Sementes</option>
-                                <option value="alimenticios">Alimentícios</option>
-                                <option value="maquinas">Máquinas</option>
-                                <option value="animais">Animais</option>
+                                <option value="sementes" <%=produto.categoria==='sementes' ? 'selected' : '' %>>Sementes
+                                </option>
+                                <option value="alimenticios" <%=produto.categoria==='alimenticios' ? 'selected' : '' %>
+                                    >Alimentícios</option>
+                                <option value="maquinas" <%=produto.categoria==='maquinas' ? 'selected' : '' %>>Máquinas
+                                </option>
+                                <option value="animais" <%=produto.categoria==='animais' ? 'selected' : '' %>>Animais
+                                </option>
                             </select>
                         </div>
 
                         <div class="campo">
                             <label>Preço (R$)</label>
-                            <input type="number" name="preco" step="0.01" placeholder="0,00" required>
+                            <input type="number" name="preco" step="0.01" value="<%= produto.preco %>" required>
                         </div>
 
                         <div class="campo">
                             <label>Quantidade em Estoque</label>
-                            <input type="number" name="estoque" placeholder="Ex: 20" required>
+                            <input type="number" name="estoque" value="<%= produto.estoque %>" required>
                         </div>
 
                         <div class="campo">
                             <label>Localização (Cidade/UF)</label>
-                            <input type="text" name="localizacao" placeholder="Ex: Xaxim, SC" required>
+                            <input type="text" name="localizacao" value="<%= produto.localizacao %>" required>
                         </div>
 
                         <div class="campo full-width">
                             <label>Descrição Detalhada</label>
-                            <textarea rows="5" name="descricao"
-                                placeholder="Descreva as características, prazos de entrega e detalhes técnicos..."
-                                required></textarea>
+                            <textarea rows="5" name="descricao" required><%= produto.descricao %></textarea>
                         </div>
                     </div>
 
                     <div class="form-actions">
-                        <a href="/home" class="btn-cancelar"
+                        <a href="/meus-anuncios" class="btn-cancelar"
                             style="text-decoration: none; text-align: center;">Cancelar</a>
-                        <button type="submit" class="btn-publicar">Publicar Anúncio</button>
+                        <button type="submit" class="btn-publicar">Salvar Alterações</button>
                     </div>
                 </form>
             </div>
         </main>
-
     </div>
 
-    </div>
-
-    <script src="./public/menu-lateral.js" defer></script>
+    <script src="/public/menu-lateral.js" defer></script>
     <script>
         const inputFotos = document.getElementById('input-fotos');
         const previewContainer = document.getElementById('image-preview');

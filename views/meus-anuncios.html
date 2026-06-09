@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <link rel="stylesheet" href="./public/home.css">
     <link rel="stylesheet" href="./public/meus-anuncios.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/public/global.css">
 </head>
+
 <body>
-    
+
     <header class="top-bar">
         <a href="home">
             <img src="/public/fotos/agro-direto.png" class="logo" alt="Logo Agro Direto">
@@ -23,14 +25,17 @@
         <div class="top-bar-icons">
             <a href="/notificacoes" class="icon-top" title="Notificações">
                 <i class="fa-regular fa-bell"></i>
-                <span class="badge-notificacao">3</span> 
+                <% if (typeof unreadNotificationsCount !== 'undefined' && unreadNotificationsCount > 0) { %>
+                    <span class="badge-notificacao"><%= unreadNotificationsCount %></span>
+                <% } %>
             </a>
-            
-            <% if ((typeof sessionUser !== 'undefined' && sessionUser.userType === 'vendedor') || (typeof user !== 'undefined' && user.tipo === 'vendedor')) { %>
-            <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
-                <i class="fa-solid fa-handshake"></i>
-            </a>
-            <% } %>
+
+            <% if ((typeof sessionUser !=='undefined' && sessionUser.userType==='vendedor' ) || (typeof user
+                !=='undefined' && user.tipo==='vendedor' )) { %>
+                <a href="/minhas-vendas" class="icon-top" title="Minhas Vendas">
+                    <i class="fa-solid fa-handshake"></i>
+                </a>
+                <% } %>
         </div>
     </header>
 
@@ -49,31 +54,25 @@
             <hr class="linha">
 
             <nav class="section">
-                <% if (typeof sessionUser !== 'undefined' && sessionUser.userType === 'vendedor') { %>
-                <a href="novo-anuncio" class="section-btn">
-                    <i class="fas fa-plus"></i> NOVO ANUNCIO
-                </a>
-                <% } %>
+                <% if (typeof sessionUser !=='undefined' && sessionUser.userType==='vendedor' ) { %>
+                    <a href="novo-anuncio" class="section-btn">
+                        <i class="fas fa-plus"></i> NOVO ANUNCIO
+                    </a>
+                    <% } %>
 
-             
-                <a href="sua-conta" class="section-btn">
-                    <i class="far fa-user"></i> SUA CONTA
-                </a>
 
-                <a href="/logout" class="section-btn" style="color: #e74c3c; margin-top: 10px;">
-                    <i class="fas fa-sign-out-alt"></i> SAIR DA CONTA
-                </a>
+                        <a href="sua-conta" class="section-btn">
+                            <i class="far fa-user"></i> SUA CONTA
+                        </a>
+
+                        <a href="/logout" class="section-btn" style="color: #e74c3c; margin-top: 10px;">
+                            <i class="fas fa-sign-out-alt"></i> SAIR DA CONTA
+                        </a>
             </nav>
 
             <hr class="linha">
 
-            <nav class="section">
-                <a href="localização" class="section-btn">
-                    <i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO
-                </a>
-            </nav>
-            
-            <hr class="linha">
+
 
             <nav class="section">
                 <div class="section-btn" onclick="abrirCategorias()" style="cursor: pointer;">
@@ -92,42 +91,85 @@
         <main class="conteudo-principal">
             <div class="painel-header">
                 <h2><i class="fas fa-boxes-stacked"></i> Meus Anúncios</h2>
-                
+
             </div>
 
             <div class="lista-gerenciamento">
-                <% if (typeof produtos !== 'undefined' && produtos.length > 0) { %>
-                    <% produtos.forEach(produto => { %>
+                <% if (typeof produtos !=='undefined' && produtos.length> 0) { %>
+                    <% produtos.forEach(produto=> { %>
                         <div class="item-anuncio" id="item-<%= produto.id %>">
-                            <% if (produto.fotos && produto.fotos.length > 0) { %>
+                            <% if (produto.fotos && produto.fotos.length> 0) { %>
                                 <img src="<%= produto.fotos[0].url %>" alt="<%= produto.titulo %>">
-                            <% } else { %>
-                                <img src="/public/fotos/agro-direto.png" alt="Sem imagem" style="object-fit: contain; padding: 10px;">
-                            <% } %>
-                            <div class="item-info">
-                                <h3><%= produto.titulo %></h3>
-                                <span class="item-preco">R$ <%= Number(produto.preco || 0).toFixed(2).replace('.', ',') %></span>
-                                <span class="status-badge"><%= produto.ativo ? 'Ativo' : 'Inativo' %></span>
-                            </div>
-                            <div class="item-acoes">
-                                <button class="btn-editar" title="Editar" onclick="window.location.href='/editar-anuncio/<%= produto.id %>'">
-                                    <i class="fas fa-pen-to-square"></i> Editar
-                                </button>
-                                <button class="btn-excluir" onclick="removerAnuncio('<%= produto.id %>')" title="Excluir">
-                                    <i class="fas fa-trash-can"></i> Excluir
-                                </button>
-                            </div>
+                                <% } else { %>
+                                    <img src="/public/fotos/agro-direto.png" alt="Sem imagem"
+                                        style="object-fit: contain; padding: 10px;">
+                                    <% } %>
+                                        <div class="item-info">
+                                            <h3>
+                                                <%= produto.titulo %>
+                                            </h3>
+                                            <span class="item-preco">R$ <%= Number(produto.preco ||
+                                                    0).toFixed(2).replace('.', ',' ) %></span>
+                                            <span class="status-badge">
+                                                <%= produto.ativo ? 'Ativo' : 'Inativo' %>
+                                            </span>
+                                        </div>
+                                        <div class="item-acoes">
+                                            <button class="btn-editar" title="Editar"
+                                                onclick="window.location.href='/anuncios/editar/<%= produto.id %>'">
+                                                <i class="fas fa-pen-to-square"></i> Editar
+                                            </button>
+                                            <button class="btn-excluir" onclick="removerAnuncio('<%= produto.id %>')"
+                                                title="Excluir">
+                                                <i class="fas fa-trash-can"></i> Excluir
+                                            </button>
+                                        </div>
                         </div>
-                    <% }) %>
-                <% } else { %>
-                    <p style="text-align: center; color: #7f8c8d; padding: 40px; width: 100%; font-family: 'Quicksand', sans-serif;">Você ainda não possui anúncios cadastrados.</p>
-                <% } %>
+                        <% }) %>
+                            <% } else { %>
+                                <p
+                                    style="text-align: center; color: #7f8c8d; padding: 40px; width: 100%; font-family: 'Quicksand', sans-serif;">
+                                    Você ainda não possui anúncios cadastrados.</p>
+                                <% } %>
             </div>
         </main>
 
-    </div> 
-    
+    </div>
+
     <script src="./public/menu-lateral.js" defer></script>
-    
+    <script>
+        function removerAnuncio(id) {
+            if (confirm("Tem certeza que deseja excluir este anúncio? A imagem e os dados serão apagados permanentemente.")) {
+                fetch(`/anuncios/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const element = document.getElementById(`item-${id}`);
+                            if (element) {
+                                element.remove();
+                            }
+
+
+                            const remaining = document.querySelectorAll('.item-anuncio');
+                            if (remaining.length === 0) {
+                                location.reload();
+                            }
+                        } else {
+                            alert(data.error || "Erro ao deletar anúncio");
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Erro de rede ao deletar anúncio:", err);
+                        alert("Erro ao conectar com o servidor.");
+                    });
+            }
+        }
+    </script>
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 :root {
-    /* Color Palette */
+
     --color-bg: #F8F9FA;
     --color-surface: #FFFFFF;
     --color-surface-hover: #ececec;
@@ -9,41 +9,35 @@
     --color-secondary: #417205;
     --color-secondary-light: #eaf1e3;
     --color-accent: #0e93d6;
-    
-    /* Text Colors */
+
     --text-main: #212529;
     --text-muted: #666666;
     --text-light: #FFFFFF;
-
-    /* Status Colors */
     --color-danger: #e74c3c;
     --color-border: #e9ecef;
     --color-border-dark: #c9c9c9;
 
-    /* Shadows */
     --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
     --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.1);
     --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.15);
 
-    /* Radii */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-pill: 50px;
 
-    /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-base: 0.3s ease;
 }
 
-/* Global Reset/Base if needed, typically in component files but good here */
+
 body {
     background-color: var(--color-bg);
     color: var(--text-main);
     font-family: "Quicksand", sans-serif;
 }
 
-/* Common utilities for glass/premium feel */
+
 .glass-effect {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
@@ -51,7 +45,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Base button standards */
 .btn-global-primary {
     background-color: var(--color-primary);
     color: var(--text-light);
